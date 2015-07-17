@@ -91,3 +91,12 @@
      (filter (fn [{:keys [grade]}] (and grade (< grade 3.0))))
      (map (juxt :name :grade)))
 ;; -> (["Tomato" 1.4])
+
+(jdbc/insert! db-spec :enrollments
+  [:klass_id :student_id]
+  [4 2])
+
+(jdbc/insert! db-spec :enrollments
+  [:klass_id :student_id]
+  [4 6])
+;; Fails!!
